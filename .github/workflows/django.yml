@@ -1,7 +1,5 @@
 name: Django CI
 
-# проверка!!!
-
 on:
   push:
     branches: ["main"]
@@ -13,16 +11,16 @@ jobs:
     steps:
       - name: Get repository code
         uses: actions/checkout@v4
-      # - name: Set up Python
-      #   uses: actions/setup-python@v5
-      #   with:
-      #     python-version: "3.13.1"
-      # - name: Install Dependencies
-      #   run: |
-      #     pip install -r requirements.txt
-      # - name: Run Test
-      #   run: |
-      #     python velik/manage.py test
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12.3"
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Run Test
+        run: |
+          python velik/manage.py test
 
   deploy:
     runs-on: ubuntu-latest
