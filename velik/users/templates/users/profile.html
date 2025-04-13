@@ -23,7 +23,15 @@
         <div class="col-12 col-lg-6 p-3 border-bottom">
             <form class="" method="post">
                 {% csrf_token %}
-                <div class="form-error">{{ form.non_field_errors }}</div>
+                <div class="form-error">
+                    {% if form.non_field_errors %}
+                    <ul class="errorlist nonfield">
+                      {% for error in form.non_field_errors %}
+                          <li>{{ error }}</li>
+                      {% endfor %}
+                    </ul>
+                    {% endif %}
+                  </div>
                 
                 {% for f in form %}
                     <p><label class="form-label" for="{{f.id_for_label}}">{{ f.label }}</label>{{ f }}</p>
